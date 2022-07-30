@@ -1,0 +1,13 @@
+venv/
+
+core/__pycache__/
+
+core/migrations
+
+summary/__pycache__/
+
+summary/migrations
+
+employment/__pycache__/
+
+.DS_Store/
