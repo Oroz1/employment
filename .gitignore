@@ -2,19 +2,19 @@ venv/
 
 core/__pycache__/
 
-core/migrations
+core/migrations/
 
 summary/__pycache__/
 
-summary/migrations
+summary/migrations/
 
 company/__pycache__/
 
-company/migrations
+company/migrations/
 
 hiring/__pycache__/
 
-hiring/migrations
+hiring/migrations/
 
 employment/__pycache__/
 
