@@ -8,6 +8,16 @@ summary/__pycache__/
 
 summary/migrations
 
+company/__pycache__/
+
+company/migrations
+
+hiring/__pycache__/
+
+hiring/migrations
+
 employment/__pycache__/
 
 .DS_Store
+
+media/
