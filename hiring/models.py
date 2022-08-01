@@ -33,7 +33,7 @@ class Tags(TimeStampMixin):
         verbose_name_plural = 'теги для вакансии'
         ordering = ('created_at', 'updated_at')
 
-    title = models.CharField(max_length=100, verbose_name='название тега')
+    title = models.CharField(max_length=100, verbose_name='название тега', unique=True)
 
     def __str__(self):
         return f'{self.title}'

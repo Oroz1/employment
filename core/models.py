@@ -2,6 +2,15 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
 
+MALE = 'M'
+FEMALE = 'F'
+
+GENDER = (
+    (MALE, 'Мужской',),
+    (FEMALE, 'Женский',),
+)
+
+
 class TimeStampMixin(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='дата добавление') 
     updated_at = models.DateTimeField(auto_now=True, verbose_name='дата изменения')
@@ -37,14 +46,6 @@ class CustomAccountManager(BaseUserManager):
 
 
 class Users(AbstractBaseUser, PermissionsMixin, TimeStampMixin):
-
-    MALE = 'M'
-    FEMALE = 'F'
-
-    GENDER = (
-        (MALE, 'Мужской',),
-        (FEMALE, 'Женский',),
-    )
 
     class Meta:
         verbose_name = "пользователь"

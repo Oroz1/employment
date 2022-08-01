@@ -45,6 +45,11 @@ INSTALLED_APPS = [
     'corsheaders',
     'django_cleanup',
     'core',
+    'summary',
+    'company',
+    'hiring',
+    'freelance',
+    'pricing',
 ]
 
 MIDDLEWARE = [

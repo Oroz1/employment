@@ -1,4 +1,3 @@
-from re import T
 from django.db import models
 from core.models import TimeStampMixin
 from core.models import Users
@@ -14,7 +13,7 @@ class Companies(TimeStampMixin):
     logo = models.ImageField(upload_to='logo_companies/', verbose_name='логотип компании')
     title = models.CharField(max_length=70, blank=True, null=True, verbose_name='название компании')
     information = models.CharField(max_length=250, blank=True, null=True, verbose_name='информация')
-    owner = models.OneToOneField(Users, on_delete=models.SET_NULL, verbose_name='владелец')
+    owner = models.OneToOneField(Users, on_delete=models.SET_NULL, null=True, verbose_name='владелец')
 
     def __str__(self):
         return f'{self.title}'

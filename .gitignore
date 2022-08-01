@@ -16,6 +16,14 @@ hiring/__pycache__/
 
 hiring/migrations/
 
+pricing/__pycache__/
+
+pricing/migrations/
+
+freelance/__pycache__/
+
+freelance/migrations/
+
 employment/__pycache__/
 
 .DS_Store
