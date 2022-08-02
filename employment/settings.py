@@ -89,8 +89,12 @@ WSGI_APPLICATION = 'employment.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'employment',
+        'USER': 'oroz',
+        'PASSWORD': '123',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -227,9 +231,7 @@ JAZZMIN_SETTINGS = {
 
         # внешний URL, который открывается в новом окне (можно добавить разрешения)
         #{"name": "Jazzmin", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
-        {"name": "Rest API Auth", "url": "/api/auth/swagger", "new_window": False},
-        {"name": "Rest API Summary", "url": "/api/summaries/swagger", "new_window": False},
-        {"name": "Rest API Company", "url": "/api/companies/swagger", "new_window": False},
+        {"name": "Rest API", "url": "/api/swagger", "new_window": False},
 
         # Приложение с выпадающим меню для всех страниц своих моделей (разрешения проверены для моделей)
         #{"app": "books"},

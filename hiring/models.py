@@ -1,7 +1,7 @@
 from django.db import models
 from core.models import TimeStampMixin
 from company.models import Companies
-from summary.models import Summaries, Occupations
+from summary.models import Summaries, Occupations, CURRENCY
 
 
 class Hiring(TimeStampMixin):
@@ -15,12 +15,13 @@ class Hiring(TimeStampMixin):
     title = models.CharField(max_length=255, verbose_name='заголовок вакансии')
     tags = models.ManyToManyField('Tags', verbose_name='теги')
     salary = models.CharField(max_length=50, verbose_name='зарплата')
+    currency = models.CharField(max_length=3, verbose_name='валюта зарплаты', choices=CURRENCY)
     occupation = models.ForeignKey(Occupations, on_delete=models.PROTECT, verbose_name='вид деятельности')
     description = models.TextField(verbose_name='описание')
     first_phone_number = models.CharField(max_length=13, verbose_name='номер телефона')
     second_phone_number = models.CharField(max_length=13, verbose_name='дополнительный номер телефона', blank=True, null=True)
     email = models.EmailField(verbose_name='почта', blank=True, null=True),
-    responses = models.ManyToManyField(Summaries, verbose_name='отклики')
+    responses = models.ManyToManyField(Summaries, verbose_name='отклики', blank=True)
 
     def __str__(self):
         return f'{self.title}'
