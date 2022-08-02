@@ -1,7 +1,7 @@
 from django.db import models
 from core.models import TimeStampMixin, Users
 from hiring.models import Tags
-from summary.models import Summaries
+from summary.models import Summaries, CURRENCY
 
 
 TOPICAL = 'topical'
@@ -27,9 +27,11 @@ class Orders(TimeStampMixin):
     first_phone_number = models.CharField(max_length=13, verbose_name='номер телефона')
     second_phone_number = models.CharField(max_length=13, verbose_name='дополнительный номер телефона', blank=True, null=True)
     email = models.EmailField(verbose_name='почта', blank=True, null=True),
+    reword = models.CharField(max_length=30, verbose_name='оплата')
     status = models.CharField(verbose_name='статус', max_length=10, choices=STATUS_OF_ORDERS, default=TOPICAL)
+    currency = models.CharField(max_length=3, verbose_name='валюта зарплаты', choices=CURRENCY)
     maker = models.OneToOneField(Users, related_name='freelance', blank=True, null=True, on_delete=models.SET_NULL, verbose_name='выполняющий')
-    responses = models.ManyToManyField(Summaries, verbose_name='отклики')
+    responses = models.ManyToManyField(Summaries, verbose_name='отклики', blank=True)
 
     def __str__(self):
         return f'{self.title}'
