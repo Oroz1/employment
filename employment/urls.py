@@ -17,11 +17,17 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework_swagger.views import get_swagger_view
 from django.shortcuts import redirect
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/swagger/', get_swagger_view(title='Company API')),
     path('api/auth/', include('core.api.urls')),
+    path('api/summaries/', include('summary.api.urls')),
+    path('api/companies/', include('company.api.urls')),
+    path('api/hiring/', include('hiring.api.urls')),
+    path('api/freelance/', include('freelance.api.urls')),
     path('', lambda x: redirect('/admin/')),
 ]
 

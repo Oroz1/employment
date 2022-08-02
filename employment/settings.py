@@ -232,7 +232,8 @@ JAZZMIN_SETTINGS = {
         # внешний URL, который открывается в новом окне (можно добавить разрешения)
         #{"name": "Jazzmin", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
         {"name": "Rest API Auth", "url": "/api/auth/swagger", "new_window": False},
-        {"name": "Rest API Summary", "url": "/api/summary/swagger", "new_window": False},
+        {"name": "Rest API Summary", "url": "/api/summaries/swagger", "new_window": False},
+        {"name": "Rest API Company", "url": "/api/companies/swagger", "new_window": False},
 
         # Приложение с выпадающим меню для всех страниц своих моделей (разрешения проверены для моделей)
         #{"app": "books"},

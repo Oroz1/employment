@@ -27,7 +27,7 @@ class Orders(TimeStampMixin):
     first_phone_number = models.CharField(max_length=13, verbose_name='номер телефона')
     second_phone_number = models.CharField(max_length=13, verbose_name='дополнительный номер телефона', blank=True, null=True)
     email = models.EmailField(verbose_name='почта', blank=True, null=True),
-    status = models.CharField(max_length=10, choices=STATUS_OF_ORDERS, default=TOPICAL)
+    status = models.CharField(verbose_name='статус', max_length=10, choices=STATUS_OF_ORDERS, default=TOPICAL)
     maker = models.OneToOneField(Users, related_name='freelance', blank=True, null=True, on_delete=models.SET_NULL, verbose_name='выполняющий')
     responses = models.ManyToManyField(Summaries, verbose_name='отклики')
 

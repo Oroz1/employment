@@ -2,7 +2,7 @@ from rest_framework import serializers
 from core.models import *
 
 
-class CreateUserProfileSerializer(serializers.ModelSerializer):
+class CreateUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = Users
         fields = (
@@ -21,3 +21,22 @@ class CreateUserProfileSerializer(serializers.ModelSerializer):
         user = Users.objects.create(**validated_data)
         user.save()
         return user
+
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Users
+        fields = (
+            'avatar',
+            'username',
+            'name',
+            'email',
+            'phone_number',
+            'gender',
+            'date_of_birth',
+        )
+
+        def get_image_url(self, obj):
+            request = self.context.get("request")
+            return request.build_absolute_uri(obj.image.url)
+

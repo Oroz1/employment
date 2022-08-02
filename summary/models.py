@@ -77,8 +77,8 @@ class Summaries(TimeStampMixin):
     currency = models.CharField(max_length=3, verbose_name='валюта зарплата', choices=CURRENCY)
     key_skills = models.ManyToManyField('Skills', verbose_name='навыки')
     education = models.ManyToManyField('Education', verbose_name='образование')
-    language = models.CharField(max_length=50, verbose_name='родной язык')
-    foreign_language = models.ManyToManyField('ForeignLanguages', verbose_name='иностранные языки')
+    language = models.ForeignKey('ForeignLanguages', verbose_name='родной язык', on_delete=models.SET_NULL, null=True, related_name='summaries_native')
+    foreign_language = models.ManyToManyField('ForeignLanguages', verbose_name='иностранные языки', related_name='summaries_foreign')
     isMoving = models.BooleanField(default=False, verbose_name='переезд')
     isDistantWork = models.BooleanField(default=False, verbose_name='удалённая работа')
     job_experience = models.ManyToManyField('JobExperience', verbose_name='предыдущие работы')
@@ -149,8 +149,8 @@ class Education(TimeStampMixin):
 class ForeignLanguages(TimeStampMixin):
 
     class Meta:
-        verbose_name = 'иностранный язык'
-        verbose_name_plural = 'иностранные языки'
+        verbose_name = 'язык'
+        verbose_name_plural = 'языки'
         ordering = ('created_at', 'updated_at')
 
     title = models.CharField(max_length=40, verbose_name='название иностранных языка', unique=True)

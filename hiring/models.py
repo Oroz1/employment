@@ -29,8 +29,8 @@ class Hiring(TimeStampMixin):
 class Tags(TimeStampMixin):
 
     class Meta:
-        verbose_name = 'тег для вакансии'
-        verbose_name_plural = 'теги для вакансии'
+        verbose_name = 'тег'
+        verbose_name_plural = 'теги'
         ordering = ('created_at', 'updated_at')
 
     title = models.CharField(max_length=100, verbose_name='название тега', unique=True)
