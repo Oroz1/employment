@@ -57,5 +57,4 @@ class UserAdminConfig(UserAdmin):
 
 admin.site.register(Users, UserAdminConfig)
 
-
 # Register your models here.

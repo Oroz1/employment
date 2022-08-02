@@ -111,7 +111,7 @@ class Citizenships(TimeStampMixin):
     title = models.CharField(max_length=70, verbose_name='страна гражданство', unique=True)
     
     def __str__(self):
-        return f'{self.username}'
+        return f'{self.title}'
 
 
 

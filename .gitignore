@@ -26,6 +26,13 @@ freelance/migrations/
 
 employment/__pycache__/
 
+employment/settings.py
+
 .DS_Store
 
 media/
+
+db.sqlite3
+
+
+
