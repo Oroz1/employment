@@ -40,3 +40,8 @@ class UserProfileSerializer(serializers.ModelSerializer):
             request = self.context.get("request")
             return request.build_absolute_uri(obj.image.url)
 
+
+class LoginSerializer(serializers.Serializer):
+    
+    username = serializers.CharField(max_length=50,)
+    password = serializers.CharField(max_length=50)

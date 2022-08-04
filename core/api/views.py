@@ -1,6 +1,7 @@
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.authtoken.models import Token
 from django.contrib.auth.hashers import make_password
+from django.contrib.auth import authenticate
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -36,3 +37,22 @@ class CurrentUser(GenericAPIView):
         serializer = self.serializer_class(request.user, many=False, context={"request": request})
         return Response(serializer.data, status=200)
 
+
+class LoginApi(GenericAPIView):
+
+    serializer_class = LoginSerializer
+
+    def post(self, request, *args, **kwargs):
+        login_serializer = self.serializer_class(data=request.data)
+        login_serializer.is_valid(raise_exception=True)
+        data = login_serializer.data
+        user = authenticate(username=data['username'], password=data['password'])
+        if user:
+            serializer = UserProfileSerializer(user, many=False, context={"request": request})
+            token = Token.objects.get_or_create(user=user)
+            data = {'token': f'{token[0].key}',}
+            profile = serializer.data
+            data.update(profile)    
+            return Response(data, status=200)
+    
+        return Response({'detail': 'Не существует пользователя или неверный пароль'})

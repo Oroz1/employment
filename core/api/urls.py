@@ -4,7 +4,7 @@ from .views import *
 
 
 urlpatterns = [
-    path('login/', obtain_auth_token),
+    path('login/', LoginApi.as_view()),
     path('user/', CurrentUser.as_view()),
     path('registration/', RegistrationAPI.as_view()),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
