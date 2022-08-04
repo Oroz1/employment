@@ -19,11 +19,14 @@ class RegistrationAPI(GenericAPIView):
         password = make_password(self.request.data['password'])
         serializer.is_valid(raise_exception=True)
         user = serializer.save(password=password)
+        serializer_user = UserProfileSerializer(user, many=False, context={"request": request})
         token = Token.objects.get_or_create(user=user)[0].key
-        data = {}
-        data["message"] = "Пользователь успешно зарегистрирован"
-        data["username"] = user.username
-        data["token"] = token
+        data = {
+            'message': 'Пользователь успешно зарегистрирован',
+            'token': token
+        }
+        profile = serializer_user.data
+        data.update(profile)
         return Response(data, status=200)
 
 
@@ -49,8 +52,8 @@ class LoginApi(GenericAPIView):
         user = authenticate(username=data['username'], password=data['password'])
         if user:
             serializer = UserProfileSerializer(user, many=False, context={"request": request})
-            token = Token.objects.get_or_create(user=user)
-            data = {'token': f'{token[0].key}',}
+            token = Token.objects.get_or_create(user=user)[0].key
+            data = {'token': f'{token}',}
             profile = serializer.data
             data.update(profile)    
             return Response(data, status=200)
