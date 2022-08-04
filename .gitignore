@@ -26,6 +26,8 @@ freelance/migrations/
 
 employment/__pycache__/
 
+.DS_Store
+
 media/
 
 db.sqlite3
