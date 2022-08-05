@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-maylyjq$g&)j9_o7qoqpt&my5(g_vyfmq1cn^ezp85!4!*7opv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['api.itadis.kg']
 
 
 # Application definition
@@ -92,12 +92,8 @@ WSGI_APPLICATION = 'employment.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'employment',
-        'USER': 'oroz',
-        'PASSWORD': '123',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': '/home/users/k/kg-zalkar/apps/employment/db.sqlite3',
     }
 }
 
@@ -174,7 +170,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
-#STATIC_ROOT = '/Users/admin/Documents/Projects/cars/static'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static', 'static_root')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
