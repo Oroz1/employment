@@ -20,14 +20,14 @@ class SummariesSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'first_name',
-            'surname',
+            'surname'
         )
 
 
 class HiringViewSerializer(serializers.ModelSerializer):
 
-    tags = TagsSerializer()
-    responses = SummariesSerializer()
+    tags = TagsSerializer(many=True)
+    responses = SummariesSerializer(many=True)
     company = CompaniesViewSerializer()
     occupation = OccupationsViewSerializer()
 

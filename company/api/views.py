@@ -5,10 +5,10 @@ from rest_framework.generics import (
     RetrieveUpdateAPIView, 
     CreateAPIView,
 )
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser
 from .serializers import CompaniesSerializer, CompaniesViewSerializer
 from rest_framework.pagination import PageNumberPagination
-from .permissions import IsOwnerPermission, isSuperAdminUser
+from .permissions import IsOwnerPermission
 from company.models import Companies
 
 
@@ -37,13 +37,13 @@ class CompaniesCreateApiView(CreateAPIView):
     permission_classes = (IsAuthenticated,)
 
 
-class CompaniesDeleteApiView(RetrieveUpdateAPIView):
+class CompaniesDeleteApiView(RetrieveDestroyAPIView):
     queryset = Companies.objects.all()
     serializer_class = CompaniesSerializer
-    permission_classes = (IsAuthenticated, IsOwnerPermission, isSuperAdminUser)
+    permission_classes = (IsAuthenticated, IsOwnerPermission,)
 
 
-class CompaniesUpdateApiView(RetrieveDestroyAPIView):
+class CompaniesUpdateApiView(RetrieveUpdateAPIView):
     queryset = Companies.objects.all()
     serializer_class = CompaniesSerializer
-    permission_classes = (IsAuthenticated, IsOwnerPermission, isSuperAdminUser)
+    permission_classes = (IsAuthenticated, IsOwnerPermission,)

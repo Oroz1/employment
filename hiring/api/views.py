@@ -9,7 +9,7 @@ from hiring.models import Hiring
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from .serializers import HiringViewSerializer, HiringSerializer
 from rest_framework.pagination import PageNumberPagination
-from .permissions import IsOwnerPermission, isSuperAdminUser
+from .permissions import IsOwnerPermission
 
 class PaginationApi(PageNumberPagination):
     page_size = 20
@@ -33,16 +33,16 @@ class HiringDetailApiView(RetrieveAPIView):
 class HiringCreateApiView(CreateAPIView):
     queryset = Hiring.objects.all()
     serializer_class = HiringSerializer
-    permission_classes = (IsAuthenticated, isSuperAdminUser)
+    permission_classes = (IsAuthenticated,)
 
 
-class HiringDeleteApiView(RetrieveUpdateAPIView):
+class HiringDeleteApiView(RetrieveDestroyAPIView):
     queryset = Hiring.objects.all()
     serializer_class = HiringSerializer
-    permission_classes = (IsAuthenticated, IsOwnerPermission, isSuperAdminUser)
+    permission_classes = (IsAuthenticated, IsOwnerPermission,)
 
 
-class HiringUpdateApiView(RetrieveDestroyAPIView):
+class HiringUpdateApiView(RetrieveUpdateAPIView):
     queryset = Hiring.objects.all()
     serializer_class = HiringSerializer
-    permission_classes = (IsAuthenticated, IsOwnerPermission, isSuperAdminUser)
+    permission_classes = (IsAuthenticated, IsOwnerPermission,) 

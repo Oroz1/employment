@@ -44,6 +44,7 @@ class CurrentUser(GenericAPIView):
 class LoginApi(GenericAPIView):
 
     serializer_class = LoginSerializer
+    permission_classes = (AllowAny,)
 
     def post(self, request, *args, **kwargs):
         login_serializer = self.serializer_class(data=request.data)
