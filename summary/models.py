@@ -96,6 +96,8 @@ class Occupations(TimeStampMixin):
         ordering = ('created_at', 'updated_at')
 
     title = models.CharField(max_length=60, verbose_name='название профессии', unique=True)
+    is_main = models.BooleanField(default=False, verbose_name='основной')
+    attributes = models.ManyToManyField('self', verbose_name='атрибуты')
 
     def __str__(self):
         return f'{self.title}'
