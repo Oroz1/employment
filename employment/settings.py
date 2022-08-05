@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-maylyjq$g&)j9_o7qoqpt&my5(g_vyfmq1cn^ezp85!4!*7opv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['api.itadis.kg']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -92,8 +92,12 @@ WSGI_APPLICATION = 'employment.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/home/users/k/kg-zalkar/apps/employment/db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'employment',
+        'USER': 'oroz',
+        'PASSWORD': '123',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
