@@ -6,21 +6,31 @@ core/migrations/
 
 summary/__pycache__/
 
+summary/api/__pycache__/
+
 summary/migrations/
 
 company/__pycache__/
+
+company/api/__pycache__/
 
 company/migrations/
 
 hiring/__pycache__/
 
+hiring/api/__pycache__/
+
 hiring/migrations/
 
 pricing/__pycache__/
 
+pricing/api/__pycache__/
+
 pricing/migrations/
 
 freelance/__pycache__/
+
+freelance/api/__pycache__/
 
 freelance/migrations/
 
