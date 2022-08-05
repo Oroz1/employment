@@ -25,6 +25,4 @@ def post_save_user(instance, created, **kwargs):
             resized_image = cropped_image.resize((200, 200), Image.ANTIALIAS)
             resized_image.save(instance.avatar.path)
     except Exception:
-        instance.avatar = '/img/user.png'
-        instance.save()
-
+        pass

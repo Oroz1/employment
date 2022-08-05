@@ -32,5 +32,6 @@ media/
 
 db.sqlite3
 
+.gitignore
 
-
+employment/
