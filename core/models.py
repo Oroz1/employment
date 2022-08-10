@@ -54,7 +54,8 @@ class Users(AbstractBaseUser, PermissionsMixin, TimeStampMixin):
  
     avatar = models.ImageField(upload_to='avatars/', null=True, blank=True, verbose_name='аватарка')
     username = models.CharField(max_length=20, unique=True, verbose_name='имя пользователя')
-    name = models.CharField(max_length=150, verbose_name='полное имя')
+    first_name = models.CharField(max_length=50, verbose_name='имя')
+    last_name = models.CharField(max_length=50, verbose_name='фаилия')
     email = models.EmailField(verbose_name='элетронная почта')
     phone_number = models.CharField(max_length=15, verbose_name='номер телефона')
     gender = models.CharField(max_length=1, verbose_name='пол', choices=GENDER, default=MALE)

@@ -16,18 +16,14 @@ class RegistrationAPI(GenericAPIView):
 
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
-        password = make_password(self.request.data['password'])
         serializer.is_valid(raise_exception=True)
-        user = serializer.save(password=password)
-        serializer_user = UserProfileSerializer(user, many=False, context={"request": request})
+        user = serializer.save()
+        serializer_user = CreateUserSerializer(user, many=False, context={'request': request})
         token = Token.objects.get_or_create(user=user)[0].key
-        data = {
-            'message': 'Пользователь успешно зарегистрирован',
-            'token': token
-        }
-        profile = serializer_user.data
-        data.update(profile)
-        return Response(data, status=200)
+        print(request.data)
+        data = {'token': token,}
+        data.update(serializer_user.data)
+        return Response(data, status=201)
 
 
 class CurrentUser(GenericAPIView):

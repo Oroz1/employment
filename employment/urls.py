@@ -22,7 +22,7 @@ from django.shortcuts import redirect
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/swagger/', get_swagger_view(title='Company API')),
+    path('api/swagger/', get_swagger_view(title='Employment API')),
     path('api/auth/', include('core.api.urls')),
     path('api/summaries/', include('summary.api.urls')),
     path('api/companies/', include('company.api.urls')),

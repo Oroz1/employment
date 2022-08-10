@@ -7,15 +7,16 @@ from .models import *
 
 class UserAdminConfig(UserAdmin):
     model = Users
-    search_fields = ('id', 'username', 'name', 'phone_number', 'email')
-    list_display = ('id', 'username', 'get_avatar', 'name', 'phone_number', 'email', 'last_login')
-    list_display_links = ('id', 'name', 'username',)
+    search_fields = ('id', 'username', 'first_name', 'last_name', 'phone_number', 'email')
+    list_display = ('id', 'username', 'get_avatar', 'first_name', 'last_name', 'phone_number', 'email', 'last_login')
+    list_display_links = ('id', 'first_name', 'last_name', 'username',)
     fieldsets = (
         (None, {'fields': (
                 'avatar',
                 'get_avatar',
                 'username',
-                'name', 
+                'first_name', 
+                'last_name', 
                 'email',
                 'gender',
                 'date_of_birth',
@@ -32,7 +33,8 @@ class UserAdminConfig(UserAdmin):
             'fields': (
                 'avatar',
                 'username',
-                'name',
+                'first_name', 
+                'last_name',
                 'email',
                 'phone_number',
                 'gender',
