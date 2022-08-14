@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework_swagger.views import get_swagger_view
@@ -22,6 +22,7 @@ from django.shortcuts import redirect
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    re_path('api/social_auth/', include('drf_social_oauth2.urls', namespace='drf')),
     path('api/swagger/', get_swagger_view(title='Employment API')),
     path('api/auth/', include('core.api.urls')),
     path('api/summaries/', include('summary.api.urls')),

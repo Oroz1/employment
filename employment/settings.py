@@ -44,7 +44,9 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
     'corsheaders',
     'django_cleanup',
-    'rest_framework_social_oauth2',
+    'oauth2_provider',
+    'social_django',
+    'drf_social_oauth2',
     'core',
     'summary',
     'company',
@@ -151,9 +153,40 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
+        #'oauth2_provider.ext.rest_framework.OAuth2Authentication',  # django-oauth-toolkit < 1.0.0
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',  # django-oauth-toolkit >= 1.0.0
+        'drf_social_oauth2.authentication.SocialAuthentication',
     ],
 }
 
+AUTHENTICATION_BACKENDS = (
+
+    'social_core.backends.facebook.FacebookAppOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
+
+    'drf_social_oauth2.backends.DjangoOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_FACEBOOK_KEY = '760676748693779'
+SOCIAL_AUTH_FACEBOOK_SECRET = '0abc06f9dce2b3e201cff6291bfd61de'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+    'fields': 'id, name, email'
+}
+
+# Google configuration
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '1013567575080-9j0cl3g6fphb26nnqeo9msrgdood1jb7.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+
+# Define SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE to get extra permissions from Google.
+SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
+    'https://www.googleapis.com/auth/userinfo.email',
+    'https://www.googleapis.com/auth/userinfo.profile',
+]
+
+SOCIAL_AUTH_USER_FIELDS = ['email', 'username', 'first_name', 'last_name', 'gender', 'password', 'avatar']
 
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
