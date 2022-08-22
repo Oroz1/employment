@@ -22,7 +22,7 @@ from django.shortcuts import redirect
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    re_path('api/social_auth/', include('drf_social_oauth2.urls', namespace='drf')),
+    path('api/social_auth/', include('drf_social_oauth2.urls', namespace='drf')),
     path('api/swagger/', get_swagger_view(title='Employment API')),
     path('api/auth/', include('core.api.urls')),
     path('api/summaries/', include('summary.api.urls')),

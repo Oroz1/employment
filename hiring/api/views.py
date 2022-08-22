@@ -22,6 +22,13 @@ class HiringApiView(ListAPIView):
     serializer_class = HiringViewSerializer
     permission_classes = (AllowAny,)
     pagination_class  = PaginationApi
+    
+    def get_queryset(self):
+        request = self.request
+        count = request.GET.get('count', None)
+        if count is not None:
+            self.queryset = Hiring.objects.all()[:int(count)]
+        return self.queryset
 
 
 class HiringDetailApiView(RetrieveAPIView):
