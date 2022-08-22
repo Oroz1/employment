@@ -313,9 +313,23 @@ JAZZMIN_SETTINGS = {
     # Пользовательские значки для приложений/моделей бокового меню См. https://fontawesome.com/icons?d=gallery&m=free&v=5.0.0,5.0.1,5.0.10,5.0.11,5.0.12,5.0.13,5.0.2,5.0.3,5.0.4,5.0.5,5.0.6,5.0.7,5.0.8,5.0.9,5.1.0,5.1.1,5.2.0,5.3.0,5.3.1,5.4.0,5.4.1,5.4.2,5.13.0,5.12.0,5.11.2,5.11.1,5.10.0,5.9.0,5.8.2,5.8.1,5.7.2,5.7.1,5.7.0,5.6.3,5.5.0,5.4.2
     # полный список бесплатных классов значков 5.13.0
     "icons": {
-        'auth.Group': 'fas fa-users',
+       'auth.Group': 'fas fa-users',
         'core.Users': 'fas fa-user',
-        'rest_framework.authtoken.TokenProxy': 'fas fa-key',
+        'hiring.Hiring': 'fas fa-binoculars',
+        'hiring.Tags': 'fas fa-tags',
+        'summary.Skills': 'fas fa-check',
+        'summary.Citizenships': 'far fa-flag',
+        'summary.Education': 'fas fa-user-graduate',
+        'summary.ForeignLanguages': 'fas fa-language',
+        'summary.JobExperience': 'fas fa-business-time',
+        'company.Companies': 'far fa-building',
+        'summary.Occupations': "fas fa-user-tie",
+        'summary.Summaries': 'fas fa-clipboard-list',
+        'rest_framework.authtoken.token': 'fas fa-users',
+        
+        'freelance.Orders':'far fa-folder',
+    
+        'rest_framework.authtoken.TokenProxy': 'fas fa-key'
     },
     # Значки, которые используются, если они не указаны вручную
     "default_icon_parents": "fas fa-chevron-circle-right",
