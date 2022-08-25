@@ -7,7 +7,8 @@ class AdminHiring(admin.ModelAdmin):
         'id',
         'company',
         'title',
-        'salary',
+        'min_salary', 
+        'max_salary',
         'currency',
         'occupation',
         'first_phone_number',
@@ -15,7 +16,7 @@ class AdminHiring(admin.ModelAdmin):
     )
     list_display_links = ('id', 'company', 'title',)
     list_filter = ('company',)
-    search_field = ('id', 'company', 'title', 'salary')
+    search_field = ('id', 'company', 'title', )
 
 
 admin.site.register(Hiring, AdminHiring)

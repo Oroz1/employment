@@ -18,6 +18,7 @@ class OccupationsViewSerializer(serializers.ModelSerializer):
         model = Occupations
         fields = '__all__'
 
+    
 
 class SummariesViewSerializer(serializers.ModelSerializer):
 

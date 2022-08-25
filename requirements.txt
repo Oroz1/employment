@@ -2,7 +2,8 @@ Django==4.0.4
 django-cleanup==6.0.0
 django-cors-headers==3.11.0
 django-jazzmin==2.5.0
-drf_social_oauth2
+drf-social-oauth2==1.2.1
+django-filter==22.1
 django-rest-swagger==2.2.0
 djangorestframework==3.13.1
 Pillow==9.1.0

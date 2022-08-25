@@ -10,6 +10,8 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from .serializers import HiringViewSerializer, HiringSerializer
 from rest_framework.pagination import PageNumberPagination
 from .permissions import IsOwnerPermission
+from django_filters import rest_framework as filters
+from .filter import HiringFilter
 
 class PaginationApi(PageNumberPagination):
     page_size = 20
@@ -22,6 +24,8 @@ class HiringApiView(ListAPIView):
     serializer_class = HiringViewSerializer
     permission_classes = (AllowAny,)
     pagination_class  = PaginationApi
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_fields = '__all__'
     
     def get_queryset(self):
         request = self.request
