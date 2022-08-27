@@ -1,3 +1,4 @@
+from dataclasses import fields
 from rest_framework import serializers
 from hiring.models import Hiring, Tags
 from summary.models import Summaries
@@ -43,3 +44,8 @@ class HiringSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class TagsSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Tags
+        fields = '__all__'

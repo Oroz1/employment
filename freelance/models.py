@@ -35,5 +35,11 @@ class Orders(TimeStampMixin):
 
     def __str__(self):
         return f'{self.title}'
-
+    
+    @property
+    def get_full_name(self):
+        if self.owner is not None:
+            return f'{self.owner.last_name} {self.owner.first_name}'
+        return self.owner
+ 
 # Create your models here.

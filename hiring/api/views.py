@@ -5,9 +5,9 @@ from rest_framework.generics import (
     RetrieveUpdateAPIView, 
     CreateAPIView,
 )
-from hiring.models import Hiring
+from hiring.models import Hiring, Tags
 from rest_framework.permissions import AllowAny, IsAuthenticated
-from .serializers import HiringViewSerializer, HiringSerializer
+from .serializers import HiringViewSerializer, HiringSerializer, TagsSerializer
 from rest_framework.pagination import PageNumberPagination
 from .permissions import IsOwnerPermission
 from django_filters import rest_framework as filters
@@ -57,3 +57,22 @@ class HiringUpdateApiView(RetrieveUpdateAPIView):
     queryset = Hiring.objects.all()
     serializer_class = HiringSerializer
     permission_classes = (IsAuthenticated, IsOwnerPermission,) 
+    
+
+
+class TagsApiView(ListAPIView):
+    queryset = Tags.objects.all()
+    serializer_class = TagsSerializer
+    permission_classes = (AllowAny,)
+
+
+class TagsDetailApiView(RetrieveAPIView):
+    queryset = Tags.objects.all()
+    serializer_class = TagsSerializer
+    permission_classes = (AllowAny,)
+
+
+class TagsCreateApiView(CreateAPIView):
+    queryset = Tags.objects.all()
+    serializer_class = TagsSerializer
+    permission_classes = (IsAuthenticated,)
