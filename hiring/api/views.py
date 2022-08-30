@@ -5,8 +5,11 @@ from rest_framework.generics import (
     RetrieveUpdateAPIView, 
     CreateAPIView,
 )
+from django.db.models import Q
 from hiring.models import Hiring, Tags
 from rest_framework.permissions import AllowAny, IsAuthenticated
+
+from summary.models import Occupations
 from .serializers import HiringViewSerializer, HiringSerializer, TagsSerializer
 from rest_framework.pagination import PageNumberPagination
 from .permissions import IsOwnerPermission
@@ -25,13 +28,24 @@ class HiringApiView(ListAPIView):
     permission_classes = (AllowAny,)
     pagination_class  = PaginationApi
     filter_backends = (filters.DjangoFilterBackend,)
-    filterset_fields = '__all__'
+    filterset_fields = (
+        'company',
+        'tags',
+        'min_salary',
+        'max_salary',
+        'currency',
+    )
     
     def get_queryset(self):
         request = self.request
         count = request.GET.get('count', None)
+        occupation = request.GET.get('occupation', None)
         if count is not None:
-            self.queryset = Hiring.objects.all()[:int(count)]
+            self.queryset = self.queryset[:int(count)]
+        if occupation is not None:
+            occupation = Occupations.objects.get(id=int(occupation))
+            self.queryset = self.queryset.filter(
+                Q(occupation__in=occupation.attributes.all()) | Q(occupation=occupation))
         return self.queryset
 
 

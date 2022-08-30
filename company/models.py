@@ -12,7 +12,7 @@ class Companies(TimeStampMixin):
 
     logo = models.ImageField(upload_to='logo_companies/', verbose_name='логотип компании')
     title = models.CharField(max_length=70, blank=True, null=True, verbose_name='название компании')
-    information = models.CharField(max_length=250, blank=True, null=True, verbose_name='информация')
+    information = models.CharField(max_length=1000, blank=True, null=True, verbose_name='информация')
     owner = models.OneToOneField(Users, on_delete=models.SET_NULL, null=True, verbose_name='владелец')
 
     def __str__(self):
